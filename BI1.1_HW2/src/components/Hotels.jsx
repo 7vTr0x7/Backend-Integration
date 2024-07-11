@@ -3,7 +3,6 @@ import useFetch from "../hooks/useFetch";
 
 const Hotels = () => {
   const { data, loading, error } = useFetch("http://localhost:4000/hotels");
-  console.log(data);
 
   return (
     <div>
