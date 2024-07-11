@@ -1,7 +1,12 @@
 import React from "react";
+import Books from "./components/Books";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Books />
+    </div>
+  );
 };
 
 export default App;
