@@ -1,7 +1,12 @@
 import React from "react";
+import Hotels from "./components/Hotels";
 
 const main = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Hotels />
+    </div>
+  );
 };
 
 export default main;
