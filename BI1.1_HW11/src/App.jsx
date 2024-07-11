@@ -5,6 +5,7 @@ const App = () => {
   return (
     <div>
       <Books />
+      <BooksByTitle title="Shoe Dog" />
     </div>
   );
 };
