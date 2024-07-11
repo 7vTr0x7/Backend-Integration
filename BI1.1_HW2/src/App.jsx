@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <Hotels />
-      <HotelsByTitle />
+      <HotelsByTitle name="New Hotel 1" />
     </div>
   );
 };
