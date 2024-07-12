@@ -39,8 +39,7 @@ const AddMovieForm = () => {
       });
 
       if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(`Failed to Fetch: ${errorMessage}`);
+        throw new Error(`Failed to Fetch`);
       }
 
       const data = await response.json();

@@ -22,9 +22,32 @@ const AddBookForm = () => {
         name === "publishedYear" || name === "rating" ? parseInt(value) : value,
     }));
   };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:4000/books", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw "Failed to fetch";
+      }
+
+      const data = response.json();
+      console.log("Added Book:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div>
-      <h2>Add New Movie</h2>
+      <h2>Add New Book</h2>
       <form onSubmit={submitHandler}>
         <label htmlFor="title">Title:</label>
         <br />
