@@ -38,10 +38,32 @@ const AddHotelForm = () => {
     }));
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:4000/hotels", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw "Failed to fetch";
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <h1>Add New Hotel</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <label htmlFor="name">Name:</label>
         <br />
         <input
