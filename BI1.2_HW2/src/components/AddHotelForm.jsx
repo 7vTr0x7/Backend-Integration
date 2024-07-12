@@ -112,7 +112,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="webSite"
-          type="number"
+          type="text"
           name="webSite"
           onChange={onChangeHandler}></input>
         <br />
@@ -121,7 +121,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="phoneNumber"
-          type="number"
+          type="text"
           name="phoneNumber"
           onChange={onChangeHandler}></input>
         <br />
@@ -130,7 +130,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="checkInTime"
-          type="number"
+          type="text"
           name="checkInTime"
           onChange={onChangeHandler}></input>
         <br />
@@ -139,7 +139,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="checkOutTime"
-          type="number"
+          type="text"
           name="checkOutTime"
           onChange={onChangeHandler}></input>
         <br />
@@ -148,7 +148,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="amenities"
-          type="number"
+          type="text"
           name="amenities"
           onChange={onChangeHandler}></input>
         <br />
@@ -222,7 +222,7 @@ const AddHotelForm = () => {
         <br />
         <input
           id="photo"
-          type="number"
+          type="text"
           name="photo"
           onChange={onChangeHandler}></input>
         <br />
