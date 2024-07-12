@@ -48,9 +48,9 @@ const AddHotelForm = () => {
         },
         body: JSON.stringify(formData),
       });
-
       if (!response.ok) {
-        throw "Failed to fetch";
+        const errorMessage = await response.text();
+        throw new Error(`Failed to Fetch: ${errorMessage}`);
       }
 
       const data = await response.json();
@@ -170,11 +170,11 @@ const AddHotelForm = () => {
         <br />
         <br />
         <input
-          id="reservationsNeeded "
+          id="reservationsNeeded"
           type="checkbox"
-          name="reservationsNeeded "
+          name="reservationsNeeded"
           onChange={onChangeHandler}></input>
-        <label htmlFor="reservationsNeeded ">Reservations Needed</label>
+        <label htmlFor="reservationsNeeded">Reservations Needed</label>
         <br />
         <br />
         <input
