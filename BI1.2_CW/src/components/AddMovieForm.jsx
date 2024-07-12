@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useFetch from "../hooks/useFetch";
 
 const AddMovieForm = () => {
   const [formData, setFormData] = useState({
@@ -25,14 +26,39 @@ const AddMovieForm = () => {
     }));
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:4000/movies", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Failed to Fetch: ${errorMessage}`);
+      }
+
+      const data = await response.json();
+      console.log("Added Movie", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div>
       <h2>Add New Movie</h2>
-      <form>
+      <form onSubmit={submitHandler}>
         <label htmlFor="title">Title:</label>
         <br />
         <input
           id="title"
+          name="title"
           type="text"
           value={formData.title}
           onChange={onChangeHandler}></input>
@@ -42,6 +68,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="releaseYear"
+          name="releaseYear"
           type="text"
           value={formData.releaseYear}
           onChange={onChangeHandler}></input>
@@ -51,6 +78,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="genre"
+          name="genre"
           type="text"
           value={formData.genre}
           onChange={onChangeHandler}></input>
@@ -61,6 +89,7 @@ const AddMovieForm = () => {
         <input
           id="director"
           type="text"
+          name="director"
           value={formData.director}
           onChange={onChangeHandler}></input>
         <br />
@@ -70,6 +99,7 @@ const AddMovieForm = () => {
         <input
           id="actors"
           type="text"
+          name="actors"
           value={formData.actors}
           onChange={onChangeHandler}></input>
         <br />
@@ -78,6 +108,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="language"
+          name="language"
           type="text"
           value={formData.language}
           onChange={onChangeHandler}></input>
@@ -87,6 +118,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="country"
+          name="country"
           type="text"
           value={formData.country}
           onChange={onChangeHandler}></input>
@@ -96,8 +128,19 @@ const AddMovieForm = () => {
         <br />
         <input
           id="rating"
+          name="rating"
           type="text"
           value={formData.rating}
+          onChange={onChangeHandler}></input>
+        <br />
+        <br />
+        <label htmlFor="plot">Plot:</label>
+        <br />
+        <input
+          id="plot"
+          name="plot"
+          type="text"
+          value={formData.plot}
           onChange={onChangeHandler}></input>
         <br />
         <br />
@@ -106,6 +149,7 @@ const AddMovieForm = () => {
         <input
           id="awards"
           type="text"
+          name="awards"
           value={formData.awards}
           onChange={onChangeHandler}></input>
         <br />
@@ -114,6 +158,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="posterUrl"
+          name="posterUrl"
           type="text"
           value={formData.posterUrl}
           onChange={onChangeHandler}></input>
@@ -123,6 +168,7 @@ const AddMovieForm = () => {
         <br />
         <input
           id="trailerUrl"
+          name="trailerUrl"
           type="text"
           value={formData.trailerUrl}
           onChange={onChangeHandler}></input>
