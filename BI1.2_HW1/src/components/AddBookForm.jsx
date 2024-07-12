@@ -38,7 +38,7 @@ const AddBookForm = () => {
         throw "Failed to fetch";
       }
 
-      const data = response.json();
+      const data = await response.json();
       console.log("Added Book:", data);
     } catch (error) {
       console.error("Error:", error);
